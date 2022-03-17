@@ -1,0 +1,19 @@
+$screens: ("desktop": 1920, "tablet": 768, "phone": 375);
+@mixin responsive($sizes...)  {
+    $i:1;
+    @each $size in $sizes{
+      @media screen and (max-width:(map-get($screens, $size) * 1px)) {
+        @content($size,$i);
+      }
+      $i: $i + 1;
+    }
+    
+}
+
+
+@function vwResponsive($screenSize,$i,$propertyValue...){
+  @return nth($propertyValue,$i)/(map-get($screens, $screenSize)/100)*1vw;
+}
+@function defResponsive($screenSize,$i,$propertyValue...){
+  @return nth($propertyValue,$i);
+}
