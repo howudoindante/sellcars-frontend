@@ -12,6 +12,7 @@ export const advertReducer = (state:AdvertState = initialState,action:AdvertActi
         case AdvertActionTypes.SET_ADVERT:
             return {...state,adverts:action.payload};
             break;
-
+        default:
+            return state;
     }
 }
