@@ -1,18 +1,29 @@
-export enum AdvertActionTypes {
-    SET_ADVERT = "SET_ADVERT"
+export enum AdvertActionCodeNames{
+    SET_ADVERT = 'SET ADVERT',
+    CHANGE_ADVERT_STATUS = 'CHANGE ADVERT STATUS',
 }
 
+export enum AdvertStatuses {
+    FOR_SALE = 'В продаже',
+    SALED = 'Продано',
+    ARCHIVED = 'В архиве',
+}
 
-export type AdvertState = {
+export interface AdvertState {
     adverts: Advert[] | [];
     isLoading: boolean;
 }
 
-export type AdvertAction = {
-    type:`${AdvertActionTypes}`;
-    payload?:any;
+export interface AdvertAction {
+    type: `${AdvertActionCodeNames}`;
+    payload?: any;
 }
 
-export type Advert = {
-    
+export interface Advert {
+    title: string;
+    price: number;
+    description: string;
+    image: string;
+    author: string;
+    status: `${AdvertStatuses}`;
 }
