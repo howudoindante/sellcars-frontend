@@ -1,10 +1,10 @@
 import { combineReducers, createStore,applyMiddleware } from 'redux';
 import { advertReducer } from './advertReducer';
-import { tokenReducer } from './tokenReducer';
+import { authReducer } from './authReducer';
 import logger from 'redux-logger';
 export const rootReducer = combineReducers({
   advertReducer,
-  tokenReducer
+  authReducer
 });
 
 

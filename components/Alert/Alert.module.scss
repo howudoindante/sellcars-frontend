@@ -1,0 +1,17 @@
+@import "../../styles/mixins.scss";
+
+
+.alertWrapper{
+  
+  @include responsive(desktop,tablet,phone) using ($size,$i){
+    position: absolute;
+    padding: defResponsive($size,$i,10px,10px,5px);
+    bottom: 0;
+    right: 0;
+    width: defResponsive($size,$i,400px,300px,100%);
+  }
+}
+
+.isHideAlert{
+  display: none;
+}

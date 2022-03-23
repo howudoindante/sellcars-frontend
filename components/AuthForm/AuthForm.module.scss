@@ -1,9 +1,9 @@
-@import "./mixins.scss";
+@import "../../styles/mixins.scss";
 
 .authform {
   @include responsive(desktop,tablet,phone) using ($size,$i){
-    width: defResponsive($size,$i,450px,375px,100%);
-    height: defResponsive($size,$i,600px,600px,100%);
+    width: defResponsive($size,$i,450px,375px,100vw);
+    height: defResponsive($size,$i,600px,600px,100vh);
     background: #f1f1f1;
     box-shadow: 5px 4px 51px rgba(0, 0, 0, 0.15);
     border-radius: defResponsive($size,$i,32px,26px,26px);
