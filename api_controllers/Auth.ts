@@ -1,10 +1,13 @@
 import axios, { AxiosResponse } from 'axios';
+
+//TODO: переименовать экшн установки ошибки на setError
 import { createAuthErrorAction, createAuthAction } from '../state/actions/auth';
 import { IAuthDispatch, AuthActionsTypes } from '../types/Auth';
 
 export type serviceName = 'login' | 'register'
 
-interface IController {
+
+interface IRequestCreator {
   serviceName:serviceName;
   body: {
     username: string;
@@ -17,7 +20,7 @@ export const authController = ({
   serviceName,
   body,
   dispatch,
-}: IController) => {
+}: IRequestCreator) => {
   try{
     let callback: (response: AxiosResponse) => void;
   switch (serviceName) {
