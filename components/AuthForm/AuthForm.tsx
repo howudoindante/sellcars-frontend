@@ -6,8 +6,8 @@ const AuthForm: FunctionComponent = ({children,isLoading}) => {
  
   return (
     <Spin spinning={isLoading}>
-      <div className={styles.authform}>
-        <div className={styles.authformContent}>
+      <div className={styles["auth-form"]}>
+        <div className={styles["auth-form__content"]}>
          {children}
         </div>
       </div>

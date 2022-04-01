@@ -1,18 +1,19 @@
-@import "../../styles/mixins.scss";
+@import '../../styles/mixins.scss';
 
-.authform {
-  @include responsive(desktop,tablet,phone) using ($size,$i){
-    width: defResponsive($size,$i,450px,375px,100vw);
-    height: defResponsive($size,$i,600px,600px,100vh);
+
+
+.auth-form {
+  @include responsive(desktop, tablet, phone) using ($size, $i) {
+    width: defResponsive($size, $i, 450px, 375px, 100vw);
+    height: defResponsive($size, $i, 600px, 600px, 100vh);
     background: #f1f1f1;
     box-shadow: 5px 4px 51px rgba(0, 0, 0, 0.15);
-    border-radius: defResponsive($size,$i,32px,26px,26px);
-    padding:defResponsive($size,$i,10px 30px,10px 20px,10px 20px);
+    border-radius: defResponsive($size, $i, 32px, 26px, 26px);
+    padding: defResponsive($size, $i, 10px 30px, 10px 20px, 10px 20px);
     display: flex;
     align-items: center;
+    &__content {
+      width: 100%;
+    }
   }
-}
-
-.authformContent{
-  width: 100%;
 }

@@ -1,5 +1,4 @@
 
-
 *{
   box-sizing: border-box;
   font-family: "Roboto";
@@ -18,6 +17,22 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+
+.page-title{
+  padding-top: 80px;
+  padding-bottom: 60px;
+  font-size: 45px;
 }
