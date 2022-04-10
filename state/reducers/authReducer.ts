@@ -1,8 +1,16 @@
-import { AuthAction, AuthActionsTypes, AuthState } from "../../types/Auth";
+import {AuthActionsTypes} from "../../types/Auth";
 
+export interface AuthState {
+    isLoading: boolean;
+    error: boolean | string;
+}
+
+export interface AuthAction {
+    type:`${AuthActionsTypes}`,
+    payload: AuthState[keyof AuthState];
+}
 
 const initialState: AuthState = {
-    token: null,
     isLoading: false,
     error : false
 };
@@ -10,9 +18,6 @@ const initialState: AuthState = {
 
 export const authReducer = (state: AuthState = initialState, action: AuthAction) => {
     switch (action.type) {
-        case AuthActionsTypes.SET_TOKEN:
-            return { ...state, token: action.payload };
-            break;
         case AuthActionsTypes.START_LOADING:
             return { ...state, isLoading: true };
             break;

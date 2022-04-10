@@ -1,0 +1,22 @@
+.detail-advert{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &__meta{
+
+    }
+    &__author{
+        display: flex;
+        align-items: center;
+    }
+    &__title{
+        font-size: 32px;
+    }
+    &__description{
+        font-size: 18px;
+    }
+    &__price{
+        font-size: 18px;
+        letter-spacing: 0.1em;
+    }
+}

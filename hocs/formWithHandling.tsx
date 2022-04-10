@@ -1,27 +1,29 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { IAuthDispatch } from '../types/Auth';
+// import { IAuthDispatch } from '../types/Auth';
 import { authController, serviceName } from '../api_controllers/Auth';
 import AuthForm from '../components/AuthForm/AuthForm';
 import AlertMessage from '../components/Alert/Alert';
-import { createAuthErrorAction } from '../state/actions/auth';
+import { setAuthError } from '../state/actions/auth';
+// import { createAuthErrorAction } from '../state/actions/auth';
 
 
 interface RecievedProps {
-    actionType:serviceName;
+    serviceName:serviceName;
 }
 
 const handler = (Component: FunctionComponent) => {
   return function Wrapper(props:RecievedProps) {
+    const {serviceName} = props;
     const [form] = Form.useForm();
-    const dispatch = useDispatch<IAuthDispatch>();
-    const { token, isLoading, error } = useSelector(
+    const dispatch = useDispatch();
+    const { isLoading, error } = useSelector(
       (state) => state.authReducer
     );
     const onFinish = (body: any) => {
-      dispatch(createAuthErrorAction(false));
-      authController({ serviceName: props.actionType, dispatch, body });
+      dispatch(setAuthError(false));
+      dispatch(authController({serviceName,body}));
     };
     
     return (
