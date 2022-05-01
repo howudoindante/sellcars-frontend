@@ -1,37 +1,18 @@
-import React, { useState } from 'react';
-import { Form, Row, Col, Input, Button, Select, Slider } from 'antd';
+import React, { useEffect } from 'react';
+import { Form, Row, Col,  Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAdvertsByQuery } from '../../api_controllers/Adverts';
+import { getAdvertsByQuery } from '../../api/Adverts';
 import { setFilter } from '../../state/actions/filter';
+import FilterFields from './Fields/Fields';
 
-const { Option } = Select;
-const FilterFields = ({ sliderMin, sliderMax }) => {
-  return (
-    <Row gutter={24}>
-      <Col span={12}>
-        <Form.Item name={`title`} label={`Название автомобиля`}>
-          <Input placeholder='Введите название автомобиля' />
-        </Form.Item>
-      </Col>
-      <Col span={12}>
-        <Form.Item name={`price`} label={`Цена`}>
-          <Slider
-            min={sliderMin}
-            max={sliderMax}
-            marks={{ [sliderMin]: 'От', [sliderMax]: 'До' }}
-            range
-            defaultValue={[sliderMin, sliderMax]}
-          />
-        </Form.Item>
-      </Col>
-    </Row>
-  );
-};
+
 const FilterForm = () => {
-  const [expand, setExpand] = useState(false);
   const [form] = Form.useForm();
+  const filterDefaultValue = {
+    title:"",
+    price:[0,Infinity]
+  };
   const dispatch = useDispatch();
-  const filter = useSelector((state) => state.filterReducer);
   const onFinish = (query: any) => {
     const advertsQuery = {
       title: query.title,
@@ -40,6 +21,15 @@ const FilterForm = () => {
     };
     dispatch(setFilter(advertsQuery));
   };
+
+  useEffect(()=>{
+    form.setFieldsValue(filterDefaultValue);
+  },[])
+
+  const clearFilter = () =>{
+      form.setFieldsValue(filterDefaultValue);
+      dispatch(getAdvertsByQuery());
+  }
 
   return (
     <Form
@@ -57,9 +47,7 @@ const FilterForm = () => {
           </Button>
           <Button
             style={{ margin: '0 8px' }}
-            onClick={() => {
-              dispatch(getAdvertsByQuery());
-            }}
+            onClick={clearFilter}
           >
             Clear
           </Button>

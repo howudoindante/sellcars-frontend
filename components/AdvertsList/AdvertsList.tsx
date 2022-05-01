@@ -1,9 +1,9 @@
-import { Card, Col, Row } from 'antd';
+import { Card, message } from 'antd';
 import { Spin } from 'antd';
 
 import Meta from 'antd/lib/card/Meta';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import {  useSelector } from 'react-redux';
 
 
 import styles from './AdvertsList.module.scss';
@@ -14,7 +14,9 @@ const AdvertsList = () => {
   const { adverts, isLoading, error } = useSelector(
     (state) => state.advertReducer
   );
-
+  if(error){
+    message.error(error,3)
+  }
   return (
     <Spin spinning={isLoading}>
       <div className={styles['adverts-list']}>
@@ -23,7 +25,8 @@ const AdvertsList = () => {
               <Card
                 hoverable
                 style={{ width: '100%' }}
-                cover={<img alt='example' src={item.image} />}
+                className={styles['adverts-list__card']}
+                cover={<img alt='example' className={styles['adverts-list__card-image']} src={item.image} />}
                 onClick={()=>router.push(router.pathname + "/" + item._id)}
               >
                 <Meta title={item.title} description={item.price + `Р`} />

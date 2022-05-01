@@ -15,6 +15,12 @@
     &__description{
         font-size: 18px;
     }
+    &__controls{
+        display: flex;
+        align-items: center;
+        gap:8px;
+        padding: 20px 0;
+    }
     &__price{
         font-size: 18px;
         letter-spacing: 0.1em;

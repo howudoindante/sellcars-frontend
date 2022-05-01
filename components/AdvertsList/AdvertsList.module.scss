@@ -6,5 +6,12 @@
   gap:20px;
   align-items: center;
   padding-bottom: 50px;
+  &__card{
+    max-height: 375px;
+  }
+  &__card-image{
+    max-height: 178px;
+    object-fit: cover; 
+  }
 }
 

@@ -1,7 +1,9 @@
-import { Avatar, Image, Skeleton } from 'antd';
+import { Avatar, Button, Image, Skeleton } from 'antd';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useEffect } from 'react';
 import styles from './DetailAdvert.module.scss';
-const DetailAdvert = ({ advert }) => {
+const DetailAdvert = ({ advert, isOwnerView , onDelete ,onEdit }) => {
+  
   if (advert) {
     return (
       <div className={styles['detail-advert']}>
@@ -11,6 +13,13 @@ const DetailAdvert = ({ advert }) => {
             {advert.description}
           </p>
           <p className={styles['detail-advert__price']}>{advert.price} ₽</p>
+          {isOwnerView && (
+            <div className={styles['detail-advert__controls']}>
+              <Button shape='circle' icon={<EditOutlined />} onClick={onEdit}/>
+              <Button shape='circle' icon={<DeleteOutlined />} onClick={onDelete}/>
+            </div>
+          )}
+
           <div className={styles['detail-advert__author']}>
             <Avatar size={'large'} src='https://joeschmoe.io/api/v1/random' />
             <span className={styles['detail-advert__author-name']}>

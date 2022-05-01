@@ -8,17 +8,11 @@ const nextConfig = {
     return [
       // if the header `x-redirect-me` is present,
       // this redirect will be applied
-      // {
-      //   source: '/user/:id/config',
-      //   // has: [
-      //   //   {
-      //   //     type: 'header',
-      //   //     key: 'x-redirect-me',
-      //   //   },
-      //   // ],
-      //   permanent: false,
-      //   destination: '/auth/login',
-      // },
+      {
+        source: '/',
+        permanent: false,
+        destination: '/adverts',
+      },
       
     ]
   },

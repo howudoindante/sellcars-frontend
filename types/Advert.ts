@@ -39,18 +39,7 @@ export interface Advert {
     status: `${AdvertStatuses}`;
     _v:number;
 }
-// {
-//     "ad": {
-//         "_id": "6225d0b51db2c8194a56023e",
-//         "title": "212442214241",
-//         "price": 10,
-//         "description": "hehhehhe",
-//         "image": "https://kolesa-uploads.ru/-/824efe71-5ce5-46e4-a793-6220d27c0398/bmw-m4.jpg",
-//         "author": "marcusblanco",
-//         "status": "Продано",
-//         "__v": 0
-//     }
-// }
+
 
 
 export interface IAdvertDispatch {
